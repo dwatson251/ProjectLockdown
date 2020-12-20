@@ -6,10 +6,8 @@ import mapboxgl from "mapbox-gl";
  * Primary UI component for user interaction
  */
 export class Map extends React.Component {
-
   public componentDidMount() {
-    // @fixme This should not be committed to the repository
-    mapboxgl.accessToken = 'pk.eyJ1IjoiamZxdWVyYWx0IiwiYSI6ImNrODcwb29vajBjMDkzbWxqZHh6ZDU5aHUifQ.BjT63Mdh-P2myNvygIhSpw';
+    mapboxgl.accessToken = String(process.env.REACT_APP_MAPBOX_TOKEN);
 
     new mapboxgl.Map({
       container: 'map',
@@ -20,6 +18,8 @@ export class Map extends React.Component {
       pitchWithRotate: false,
       hash: true,
     });
+
+    console.log(process.env)
   }
 
   render() {
